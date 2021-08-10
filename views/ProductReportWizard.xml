@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+	<record id="view_product_excel_report_wizard_form" model="ir.ui.view">
+		<field name="name">product.report.wizard</field>
+		<field name="model">product.report.wizard</field>
+		<field name="type">form</field>
+		<field name="arch" type="xml">
+			<form string="Product Excel Report">
+				<separator string="Product Excel Report" colspan="4" />
+				<group>
+					<group>
+						<field name="name" required="1"/>
+						<field name="product_type" required="1"/>
+						<field name="data_file" filename="filename" widget="binary" attrs="{'readonly':True}"/>
+					</group>
+					<group>
+						
+						<field name="sale_ok" />
+						<field name="purchase_ok" />
+					</group>
+				</group>
+				<footer>
+					<button name="export" string="Export"
+						type="object" default_focus="1" />
+					or
+					<button string="Cancel" class="oe_link" special="cancel" />
+				</footer>
+			</form>
+		</field>
+	</record>
+
+	<record id="action_product_excel_report_wizard" model="ir.actions.act_window">
+		<field name="name">Product Report Wizard</field>
+		<field name="res_model">product.report.wizard</field>
+		<field name="view_mode">form</field>
+		<field name="target">new</field>
+	</record>
+
+  <menuitem id="product_report_submenu" name="Product Report" parent="sale.sale_order_menu" sequence="90" action="action_product_excel_report_wizard"/>
+
+</odoo>
